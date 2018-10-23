@@ -1,0 +1,10 @@
+# TO HIDE MY API KEYS :-)
+data/processing/apikey.js
+
+node_modules
+package-lock.json
+.DS_STORE
+data/.DS_STORE
+
+# NOT READY YET
+data/geocoded-fixed.json

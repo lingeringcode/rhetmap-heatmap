@@ -1,14 +1,15 @@
 # Writing Studies and Dataviz
 
-Need description.
+This repo contains the working heatmap of job market data.
 
 ## Data Sources &amp; Processing
 
 **Heatmap**
 
-- <code>/data/combined.json</code>: Created with <code>combinedData.js</code>. Combined list of jobs from 2012-17 market years. Note: Manually checked listings marked as 2 or more jobs and created copies in accordance with that number.
-- <code>/data/weights-addresses.json</code>: Created with <code>addresses.js</code>.
-- <code>/data/geocoded.json</code>: Created with <code>geocode.js</code>.
+- <code>/data/combined.json</code>: Created with <code>/data/processing/combinedData.js</code>. Combined list of jobs from 2012-17 market years. Note: Manually checked listings marked as 2 or more jobs and created copies in accordance with that number.
+- <code>/data/weights-addresses.json</code>: Created with <code>/data/processing/addresses.js</code>.
+- <code>/data/geocoded.json</code>: Created with <code>/data/processing/geocode.js</code>.
+  - I am currently revising the geocoding process, so it will be automate the process to also output the creation of the complete data set necessary for the visualization. Originally, I needed to return only the geocode values, then write a separate script to stitch the geocodes and original address info with the weights as the new output data for the heatmap. 
 
 **Annual market positions**
 

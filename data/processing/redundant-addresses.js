@@ -11,7 +11,7 @@ var csv = require("d3-dsv").csv;
 var combinedData = JSON.parse(fs.readFileSync("data/combined-1213-1819.json", "utf-8"));
 
 // Outputs
-var titlesPath = "data/weights-addresses-1819.json";
+var titlesPath = "data/redundant-addresses-1819.json";
 
 // Global arrays
 var addressData = [];
@@ -23,51 +23,12 @@ for (var d = 0; d <= combinedData.length - 1; d++) {
     var searchString = combinedData[d][dd].Address;
     var cleanAddress = addressRegExp(searchString);
 
-    // Write first entry
-    if (addressData.length == 0) {
-      var addressItem = {
-        address: cleanAddress,
-        weight: 1
-      };
-      addressData.push(addressItem);
-    }
-    // If more than 0, write more
-    else if (addressData.length > 0 && cleanAddress != undefined) {
-      var ca = checkIfAddressExists(cleanAddress);
-
-      if (ca[0] == true) {
-        addressData[ca[1]].weight += 1;
-      }
-      if (ca[0] == false) {
-        var ai = {
-          address: cleanAddress,
-          weight: 1
-        };
-        addressData.push(ai);
-      }
+    if (cleanAddress != undefined) {
+      addressData.push({ address: cleanAddress });
     }
   }
 }
 outputFile(addressData);
-
-/*
-  Check if address exists or not
-*/
-function checkIfAddressExists(a) {
-  for (var c = 0; c <= addressData.length-1; c++) {
-    var check, index, ci;
-    var justCityStateOrig = cityRegExp(addressData[c].address);
-    var justCityStateNew = cityRegExp(a);
-
-    if (justCityStateOrig == justCityStateNew) {
-      check = true;
-      index = c;
-      ci = [check, index];
-      return ci;
-    }
-  }
-  return [false, null];
-}
 
 /*
   REGEX for addresses: City, ST 00000

@@ -6,5 +6,5 @@ package-lock.json
 .DS_STORE
 data/.DS_STORE
 
-# NOT READY YET
-data/geocoded-fixed.json
+# JSON Files
+*.json
